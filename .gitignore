@@ -1,0 +1,29 @@
+# Dependencias
+node_modules/
+vendor/
+__pycache__/
+*.pyc
+
+# Entornos
+.env
+.env.local
+.env.production
+.DS_Store
+
+# Compilados / builds
+/dist
+/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/logs/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+
+# Archivos temporales o IDE
+*.log
+.idea/
+.vscode/
+*.sqlite
+*.db
