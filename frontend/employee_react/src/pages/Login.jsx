@@ -1,18 +1,49 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import logo from "../assets/logo-intrahub.jpg";
 
 export default function Login() {
   const navigate = useNavigate();
+  const { login, user, loading: authLoading } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  // Redirigir si ya está autenticado
+  useEffect(() => {
+    if (!authLoading && user) {
+      navigate("/", { replace: true });
+    }
+  }, [user, authLoading, navigate]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setLoading(true);
 
-    // 🚀 Redirección directa SIN login real
-    navigate("/");
+    console.log('Login form submitted with:', { email });
+
+    try {
+      const result = await login(email, password);
+      console.log('Login result:', result);
+      
+      if (result.success) {
+        console.log('Login successful, navigating to home...');
+        // Redireccionar al dashboard
+        navigate("/");
+      } else {
+        console.log('Login failed:', result.error);
+        setError(result.error || "Error al iniciar sesión");
+      }
+    } catch (error) {
+      console.error('Login exception:', error);
+      setError("Error al iniciar sesión. Inténtalo de nuevo.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -46,7 +77,11 @@ export default function Login() {
               required
             />
 
-            <button type="submit">Entrar</button>
+            {error && <p className="error">{error}</p>}
+
+            <button type="submit" disabled={loading}>
+              {loading ? "Entrando..." : "Entrar"}
+            </button>
           </form>
 
           <div className="login-links">
