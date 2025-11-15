@@ -60,4 +60,10 @@ class User extends Authenticatable
     {
         return $this->role === 'cliente';
     }
+
+    // Método de compatibilidad para el frontend
+    public function getIsAdminAttribute(): bool
+    {
+        return $this->isAdmin();
+    }
 }
