@@ -39,6 +39,9 @@ export default function Navbar() {
         <NavLink to="/vacantes" className={linkClass}>
           Vacantes
         </NavLink>
+        <NavLink to="/cargacv" className={linkClass}>
+          Carga de CV
+        </NavLink>
         <NavLink to="/notifications" className={linkClass}>
           Notificaciones
         </NavLink>

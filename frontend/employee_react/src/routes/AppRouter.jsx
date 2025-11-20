@@ -11,6 +11,9 @@ import AdminVacantes from "../pages/AdminVacantes";
 import AdminNews from "../pages/AdminNews";
 import Navbar from "../components/Navbar";
 import ProtectedRoute from "../components/ProtectedRoute";
+import CargaCV from "../pages/CargaCV";
+
+
 
 export default function AppRouter() {
   return (
@@ -19,6 +22,8 @@ export default function AppRouter() {
       <Route path="/login" element={<Login />} />
       <Route path="/registro" element={<Register />} />
       <Route path="/restablecer" element={<ResetPassword />} />
+
+      <Route path="/cargacv" element={<CargaCV />} />
 
       {/* Páginas protegidas */}
       <Route
