@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\VacanteController;
+use App\Http\Controllers\PostulacionController;
 
 // Todas estas rutas usan el grupo "api" (SIN CSRF)
 
@@ -28,4 +29,16 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/vacantes', [VacanteController::class, 'store']);
     Route::put('/vacantes/{vacante}', [VacanteController::class, 'update']);
     Route::delete('/vacantes/{vacante}', [VacanteController::class, 'destroy']);
+
+     // Enviar CV a una vacante (empleado)
+    Route::post('/vacantes/{vacante}/postulaciones', [PostulacionController::class, 'store']);
+
+    // Ver mis postulaciones (empleado)
+    Route::get('/mis-postulaciones', [PostulacionController::class, 'misPostulaciones']);
+
+    // Ver postulaciones de una vacante (admin)
+    Route::get('/vacantes/{vacante}/postulaciones', [PostulacionController::class, 'listarPorVacante']);
+
+    // Cambiar estado de una postulación (admin)
+    Route::patch('/postulaciones/{postulacion}', [PostulacionController::class, 'actualizarEstado']);
 });
