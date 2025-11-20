@@ -675,3 +675,42 @@ body {
   border-color: var(--accent-color);
   box-shadow: 0 0 0 1px rgba(0, 225, 162, 0.8);
 }
+
+.cargacv-container {
+  margin-left: 260px; /* por la sidebar */
+  display: flex;
+  justify-content: center;
+  padding-bottom: 3rem;
+}
+
+.cargacv-form {
+  width: 100%;
+  max-width: 700px;
+}
+
+.cargacv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.cargacv-textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: 1px solid #1f2937;
+  background: #020617;
+  color: #e5e7eb;
+}
+
+.cargacv-textarea:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 1px rgba(0, 225, 162, 0.8);
+}
+
+.cv-file-name {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
