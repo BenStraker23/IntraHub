@@ -12,7 +12,7 @@ class VacanteController extends Controller
      */
     public function index(Request $request)
     {
-        $estado = $request->query('estado', 'abierta');
+        $estado = $request->query('estado');
         $buscar = $request->query('buscar');
 
         $query = Vacante::with('autor:id,name')

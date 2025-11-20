@@ -29,7 +29,7 @@ export default function Register() {
 
     try {
       // Ajusta la ruta a tu backend real
-      await api.post("/auth/register", form);
+      await api.post("/register", form);
       setMensaje("Usuario creado correctamente. Ahora puedes iniciar sesión.");
       setTimeout(() => navigate("/login"), 1500);
     } catch {

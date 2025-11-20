@@ -1,68 +1,716 @@
+/* 
+   ============================================
+   🎨 PALETA DE COLORES INTRAHUB
+   ============================================
+*/
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --primary-color: #1460ff;      /* azul */
+  --primary-dark: #0d3dbc;       /* azul más oscuro */
+  --accent-color: #00e1a2;       /* verde aqua */
+  --accent-secondary: #7b3ffc;   /* morado */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --bg-color: #030712;           /* fondo general */
+  --card-bg: #0b1120;            /* fondo recuadros */
+  --text-main: #e5e7eb;          /* texto principal */
+  --text-muted: #9ca3af;         /* texto secundario */
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* 
+   ============================================
+   🌌 FONDO GLOBAL (radial estilo dashboard)
+   ============================================
+*/
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(20, 96, 255, 0.25), transparent 55%),
+    radial-gradient(circle at top right, rgba(0, 225, 162, 0.25), transparent 55%),
+    radial-gradient(circle at bottom, rgba(123, 63, 252, 0.2), transparent 55%),
+    #030712;
+  color: var(--text-main);
+}
+
+
+
+/* 
+   ============================================
+   🟦 LOGIN PAGE
+   ============================================
+*/
+.login-page {
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.login-container {
+  width: 100%;
+  max-width: 480px;
+  padding: 1.5rem;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+.login-box {
+  background: radial-gradient(circle at top, #111827 0, var(--card-bg) 55%);
+  color: var(--text-main);
+  padding: 2.5rem 3rem;
+  border-radius: 22px;
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.75);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-box::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(135deg,
+    rgba(20, 96, 255, 0.7),
+    rgba(0, 225, 162, 0.7),
+    rgba(123, 63, 252, 0.7)
+  );
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* LOGO */
+.logo-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.login-logo {
+  width: 135px;
+  height: 135px;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+/* FORMULARIO LOGIN */
+.login-box h2 {
+  margin: 0;
+  margin-bottom: 0.4rem;
+  font-size: 1.7rem;
+}
+
+.login-subtitle {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.login-box label {
+  display: block;
+  text-align: left;
+  margin: 0.8rem 0 0.3rem;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.login-box input {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 10px;
+  border: 1px solid #1f2937;
+  background: #020617;
+  color: var(--text-main);
+  transition: 0.2s;
+}
+
+.login-box input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 1px rgba(0, 225, 162, 0.7);
+}
+
+.login-box button {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--accent-color),
+    var(--accent-secondary)
+  );
+  border: none;
+  border-radius: 999px;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+.login-links {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.login-links a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.login-links a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* 
+   ============================================
+   📰 HOMENEWS / DASHBOARD
+   ============================================
+*/
+.home-wrapper {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.home-title {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #00c2ff, #00e1a2, #7b3ffc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.3rem;
+}
+
+.home-subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+/* Secciones */
+.home-section {
+  background: #020617;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.55);
+}
+
+.section-title {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+/* NOTICIAS */
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.news-card {
+  padding: 1rem;
+  background: #0b1120;
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  transition: 0.2s;
+}
+
+.news-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.news-category {
+  background: rgba(20, 96, 255, 0.25);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+}
+
+.news-read-more-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--accent-color);
+  background: transparent;
+  color: var(--accent-color);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.news-read-more-btn:hover {
+  background: var(--accent-color);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* VACANTES */
+.vacantes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.vacante-card {
+  padding: 1rem;
+  background: #0b1120;
+  border-radius: 14px;
+  border: 1px solid #1f2937;
+  transition: 0.2s;
+}
+
+.vacante-card:hover {
+  border-color: var(--accent-secondary);
+}
+
+.vacante-area {
+  color: var(--text-muted);
+}
+
+.vacante-btn {
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--accent-color),
+    var(--accent-secondary)
+  );
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.45);
+  transition: 0.2s;
+}
+
+.vacante-btn:hover {
+  filter: brightness(1.1);
+}
+
+/* VACANTE RESALTADA */
+.vacante-card.highlighted {
+  border: 2px solid var(--accent-color);
+  background: linear-gradient(135deg, #0b1120, #1a2332);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+  animation: highlight-pulse 2s ease-in-out;
+}
+
+@keyframes highlight-pulse {
+  0% {
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
   }
-  a:hover {
-    color: #747bff;
+  50% {
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.6);
   }
-  button {
-    background-color: #f9f9f9;
+  100% {
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
   }
+}
+
+/* MODAL PARA NOTICIAS */
+.news-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.news-modal {
+  background: #0b1120;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  max-width: 600px;
+  max-height: 80vh;
+  width: 90%;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.news-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border-bottom: 1px solid #1f2937;
+}
+
+.news-modal-header h2 {
+  margin: 0;
+  color: white;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.news-modal-close {
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.news-modal-close:hover {
+  color: white;
+  background: #1f2937;
+}
+
+.news-modal-meta {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #1f2937;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+.news-modal-date,
+.news-modal-author {
+  background: #1f2937;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.news-modal-content {
+  padding: 1.5rem;
+}
+
+.news-modal-content p {
+  color: #e5e7eb;
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre-line;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .news-modal {
+    max-width: 95%;
+    max-height: 85vh;
+  }
+  
+  .news-modal-header {
+    padding: 1rem;
+  }
+  
+  .news-modal-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .login-box {
+    padding: 2rem 1.5rem;
+  }
+  .login-logo {
+    width: 110px;
+    height: 110px;
+  }
+}
+/* ============================
+   SIDEBAR / NAV IZQUIERDO
+   ============================ */
+
+.sidebar {
+  position: fixed;
+  inset-block: 0;
+  left: 0;
+  width: 230px;
+  padding: 1.4rem 1.1rem;
+  background: rgba(2, 6, 23, 0.96);
+  border-right: 1px solid #111827;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 20;
+  box-shadow: 12px 0 40px rgba(0, 0, 0, 0.7);
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-logo-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--accent-color),
+    var(--accent-secondary)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  font-size: 0.95rem;
+}
+
+.sidebar-title h1 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.sidebar-title span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* links */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.sidebar-link {
+  padding: 0.45rem 0.75rem;
+  border-radius: 10px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: 0.15s ease;
+}
+
+.sidebar-link:hover {
+  background: #111827;
+  color: #e5e7eb;
+}
+
+.sidebar-link-active {
+  background: linear-gradient(
+    135deg,
+    rgba(20, 96, 255, 0.85),
+    rgba(0, 225, 162, 0.9)
+  );
+  color: white;
+}
+
+/* botón salir */
+.sidebar-logout {
+  margin-top: 1rem;
+  padding: 0.55rem 0.75rem;
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid #4b5563;
+  background: transparent;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.sidebar-logout:hover {
+  border-color: #f97373;
+  background: rgba(15, 23, 42, 0.9);
+}
+
+/* ============================
+   PERFIL
+============================ */
+.perfil-box {
+  background: #0b1120;
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid #1f2937;
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.perfil-box input {
+  padding: 0.6rem;
+  background: #020617;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  color: white;
+}
+
+.perfil-box input:focus {
+  border-color: var(--accent-color);
+}
+
+/* ============================
+   BOLETAS
+============================ */
+.boletas-list {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.boleta-card {
+  background: #0b1120;
+  padding: 1rem;
+  border-radius: 14px;
+  border: 1px solid #1f2937;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ============================
+   VACANTES - PÁGINA COMPLETA
+============================ */
+
+.vacantes-page-container {
+  margin-left: 260px; /* espacio por la sidebar */
+  display: flex;
+  justify-content: center;
+  padding-bottom: 3rem;
+}
+
+.vacantes-list-full {
+  width: 100%;
+  max-width: 800px; /* 👈 centra y limita ancho */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Tarjeta de vacante grande */
+.vacante-large {
+  padding: 1.5rem;
+  background: #0b1120;
+  border-radius: 16px;
+  border: 1px solid #1f2937;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+  transition: 0.2s ease;
+}
+
+.vacante-large:hover {
+  border-color: var(--accent-secondary);
+  transform: translateY(-2px);
+}
+
+/* Área / categoría de vacante */
+.vacante-area {
+  display: inline-block;
+  margin-top: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.vacante-info-details p {
+  margin: 0.2rem 0;
+  color: var(--text-muted);
+}
+
+.perfil-container {
+  margin-left: 260px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 3rem;
+}
+
+.perfil-box {
+  background: #0b1120;
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid #1f2937;
+  width: 100%;
+  max-width: 550px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.perfil-box input {
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: 1px solid #1f2937;
+  background: #020617;
+  color: white;
+}
+
+.perfil-box input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 1px rgba(0, 225, 162, 0.8);
+}
+
+.cargacv-container {
+  margin-left: 260px; /* por la sidebar */
+  display: flex;
+  justify-content: center;
+  padding-bottom: 3rem;
+}
+
+.cargacv-form {
+  width: 100%;
+  max-width: 700px;
+}
+
+.cargacv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.cargacv-textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: 1px solid #1f2937;
+  background: #020617;
+  color: #e5e7eb;
+}
+
+.cargacv-textarea:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 1px rgba(0, 225, 162, 0.8);
+}
+
+.cv-file-name {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
 }

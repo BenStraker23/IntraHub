@@ -1,11 +1,13 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import NotificationDropdown from "./NotificationDropdown";
 
 export default function Navbar() {
   const navigate = useNavigate();
+  const { user, logout, isAdmin } = useAuth();
 
   const handleLogout = () => {
-    // Si más adelante usas token, aquí lo borras
-    // localStorage.removeItem("AUTH_TOKEN");
+    logout();
     navigate("/login");
   };
 
@@ -19,7 +21,13 @@ export default function Navbar() {
         <div className="sidebar-logo-circle">IH</div>
         <div className="sidebar-title">
           <h1>IntraHub</h1>
-          <span>Empleado</span>
+          <span>{user?.name || 'Usuario'}</span>
+          {isAdmin() && <small className="admin-badge">Admin</small>}
+        </div>
+        
+        {/* NOTIFICACIONES */}
+        <div className="sidebar-notifications">
+          <NotificationDropdown />
         </div>
       </div>
 
@@ -31,12 +39,32 @@ export default function Navbar() {
         <NavLink to="/vacantes" className={linkClass}>
           Vacantes
         </NavLink>
+        <NavLink to="/cargacv" className={linkClass}>
+          Carga de CV
+        </NavLink>
+        <NavLink to="/notifications" className={linkClass}>
+          Notificaciones
+        </NavLink>
         <NavLink to="/perfil" className={linkClass}>
           Mi perfil
         </NavLink>
         <NavLink to="/boletas" className={linkClass}>
           Boletas
         </NavLink>
+        
+        {/* OPCIONES DE ADMIN */}
+        {isAdmin() && (
+          <>
+            <div className="sidebar-divider"></div>
+            <span className="sidebar-section-title">Administración</span>
+            <NavLink to="/admin/vacantes" className={linkClass}>
+              Gestionar Vacantes
+            </NavLink>
+            <NavLink to="/admin/news" className={linkClass}>
+              Gestionar Noticias
+            </NavLink>
+          </>
+        )}
       </nav>
 
       {/* BOTÓN SALIR */}
