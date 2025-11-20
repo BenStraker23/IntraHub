@@ -95,7 +95,7 @@ export default function Vacantes() {
         </p>
       </div>
 
-      {/* CONTENEDOR CENTRADO */}
+      {/* CONTENEDOR CENTRADO - Para la vista */}
       <div className="vacantes-page-container">
         <div className="vacantes-list-full">
 
