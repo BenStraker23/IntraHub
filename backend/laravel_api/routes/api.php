@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\VacanteController;
 use App\Http\Controllers\PostulacionController;
+use App\Http\Controllers\PayslipController;
 
 // Todas estas rutas usan el grupo "api" (SIN CSRF)
 
@@ -29,6 +30,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/vacantes', [VacanteController::class, 'store']);
     Route::put('/vacantes/{vacante}', [VacanteController::class, 'update']);
     Route::delete('/vacantes/{vacante}', [VacanteController::class, 'destroy']);
+    Route::get('/payslips', [PayslipController::class, 'index']);
+    Route::post('/payslips/sync', [PayslipController::class, 'sync']);
 
      // Enviar CV a una vacante (empleado)
     Route::post('/vacantes/{vacante}/postulaciones', [PostulacionController::class, 'store']);
