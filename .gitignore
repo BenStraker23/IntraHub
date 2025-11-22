@@ -1,4 +1,4 @@
-echo "node_modules/
+node_modules/
 vendor/
 __pycache__/
 *.pyc
@@ -20,4 +20,13 @@ __pycache__/
 .vscode/
 *.sqlite
 *.db
-" > .gitignore
+
+# Ruby - intrahub_reports
+intrahub_reports/log/*
+intrahub_reports/tmp/*
+intrahub_reports/vendor/*
+intrahub_reports/msys64/*
+
+# Dejar solo archivos de marcador
+!intrahub_reports/log/.keep
+!intrahub_reports/tmp/.keep
