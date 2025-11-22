@@ -34,5 +34,9 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    'reports' => [
+    'base_url' => env('REPORTS_SERVICE_URL', 'http://127.0.0.1:4000'),
+],
+
 
 ];

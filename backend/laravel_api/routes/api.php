@@ -6,7 +6,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\VacanteController;
 use App\Http\Controllers\PostulacionController;
 use App\Http\Controllers\PayslipController;
-
+use App\Http\Controllers\ReportsController;
 // Todas estas rutas usan el grupo "api" (SIN CSRF)
 
 Route::post('/register', [AuthController::class, 'register']);
@@ -44,4 +44,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Cambiar estado de una postulación (admin)
     Route::patch('/postulaciones/{postulacion}', [PostulacionController::class, 'actualizarEstado']);
+    Route::get('/reports/metrics', [ReportsController::class, 'metrics']);
 });
